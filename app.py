@@ -3,6 +3,7 @@ import json
 from flask import Flask
 from flask import request
 import json2table
+import xml.etree.ElementTree as ET
 
 app = Flask(__name__)
 
@@ -15,24 +16,22 @@ def home():
 @app.route("/generatetable", methods=['GET', 'POST'])
 def generatetable():
     # make sure data is sent to data
-    xmldata = '{"Message": "Hi there, we didnt get your message","ResponseStatus": "Waiting"}'
+
     xmldata = request.data #get the xml content from the request
+
+    root = ET.fromstring(xmldata)
+
+    for movie in root.findall("./pd:processDefinition/pd:activity/[pd:type='com.tibco.plugin.xml.XMLParseActivity']"):
+        print(movie)
+        smallxml=(ET.tostring(movie, encoding='utf8').decode('utf8'))
+
+
+
     #print(xmldata)
-    xmldictionary=xmltodict.parse(xmldata)
+    xmldictionary=xmltodict.parse(smallxml)
     jsonstring=(json.dumps(xmltodict.parse(xmldata))) # this create an jsonstring-we can directly use jsonloads operation
     jsonobject=json.loads(jsonstring)
-    """
-    # we need to filter out the required json elements here
-    for pd in jsonobject:
-        for activity in pd['pd:activity']:
-            jsonactivity=activity
 
-    
-
-    for inneractivity in jsonobject[["pd:ProcessDefinition"["pd:group"["pd:activity"["pd:resourceType" == "ae.activities.MapperActivity"]]]]]:
-        jsonactivityinner=inneractivity
-
-"""
 
     build_direction = "LEFT_TO_RIGHT"
     table_attributes = {"style": "width:100%", "border": 1, "border-collapse": "collapse"}
