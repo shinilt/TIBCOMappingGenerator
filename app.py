@@ -21,7 +21,7 @@ def generatetable():
 
     root = ET.fromstring(xmldata)
 
-    for movie in root.findall("./pd:processDefinition/pd:activity/[pd:type='com.tibco.plugin.xml.XMLParseActivity']"):
+    for movie in root.findall("./pd:processDefinition/pd:activity[pd:type='com.tibco.plugin.xml.XMLParseActivity']"):
         print(movie)
         smallxml=(ET.tostring(movie, encoding='utf8').decode('utf8'))
 
