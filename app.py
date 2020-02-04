@@ -24,7 +24,7 @@ def generatetable():
     for activity in jsonobject[["pd:ProcessDefinition"["pd:activity"["pd:resourceType"=="ae.activities.MapperActivity"]]]]:
         jsonactivity=activity
 
-    for inneractivity in jsonobject[["pd:ProcessDefinition"["pd:group"["pd:activity"["pd:resourceType" == "ae.activities.MapperActivity"]]]]:
+    for inneractivity in jsonobject[["pd:ProcessDefinition"["pd:group"["pd:activity"["pd:resourceType" == "ae.activities.MapperActivity"]]]]]:
         jsonactivityinner=inneractivity
 
 
