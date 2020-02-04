@@ -21,13 +21,13 @@ def generatetable():
     xmldictionary=xmltodict.parse(xmldata)
     jsonstring=(json.dumps(xmltodict.parse(xmldata))) # this create an jsonstring-we can directly use jsonloads operation
     jsonobject=json.loads(jsonstring)
-
+    """
     # we need to filter out the required json elements here
     for pd in jsonobject:
         for activity in pd['pd:activity']:
             jsonactivity=activity
 
-    """
+    
 
     for inneractivity in jsonobject[["pd:ProcessDefinition"["pd:group"["pd:activity"["pd:resourceType" == "ae.activities.MapperActivity"]]]]]:
         jsonactivityinner=inneractivity
@@ -36,7 +36,7 @@ def generatetable():
 
     build_direction = "LEFT_TO_RIGHT"
     table_attributes = {"style": "width:100%", "border": 1, "border-collapse": "collapse"}
-    tableout = json2table.convert(jsonactivity, build_direction=build_direction, table_attributes=table_attributes)
+    tableout = json2table.convert(jsonobject, build_direction=build_direction, table_attributes=table_attributes)
     return tableout
 
 if __name__ == "__main__":
