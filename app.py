@@ -10,30 +10,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def home():
-    return """
-    <i>Service Health - Good</i>
-    <br>
-    <h1><u> TIBCO Mapping Exporter</u> </h1>
-    This application provides below functionality.
-     <br>
-    The API can be used to export the mapping defined in the TIBCO BW 5.x processes.
-    <br>
-    The scope is to extract the mapping content of the Map Data activity only. The response can be copied to excel in tabular form.
-    <br>
-    Basic exposure to xml is required to understand and interpret the mapping exported to the table.
-    <br><br><br>
-    <u>API Details</u> <br><br>
-    API URI- /generatetable
-    <br>
-    API Method - POST,GET (both work the same for simplicity).
-    <br>
-    API Input-  TIBCO BW 5.x process definition xml content in full(.process file content).
-    <br>
-    API Response -  Tabular format  of the mappings defined all the Map Data activities.
-    
-    <br><br><br><br><br>
-    Disclaimer- The data you submit is neither logged nor archived. If you dump trash, you will be returned trash. Developed as a personal project.
-    """
+    return render_template("home.html")
 
 
 @app.route("/generatetable", methods=['GET', 'POST'])
