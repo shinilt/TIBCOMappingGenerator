@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
+.menu {
+  float: left;
+  width: 20%;
+}
+.menuitem {
+  padding: 8px;
+  margin-top: 7px;
+  border-bottom: 1px solid #f1f1f1;
+}
+.main {
+  float: left;
+  width: 90%;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.right {
+  background-color: lightblue;
+  float: left;
+  width: 20%;
+  padding: 10px 15px;
+  margin-top: 7px;
+}
+
+@media only screen and (max-width:800px) {
+  /* For tablets: */
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  /* For mobile phones: */
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body style="font-family:Verdana;">
+
+<div style="background-color:#f1f1f1;padding:15px;">
+  <h1>TIBCO Mapping Generator</h1>
+  <h3>Export the mapping defined in TIBCO BW 5.x processes</h3>
+</div>
+
+<div style="overflow:auto">
+ 
+
+  <div class="main">
+   
+    <p>This application provides APIs that can be used to export the mapping defined in the TIBCO BW 5.x processes.
+ 
+
+<ul>
+  <li>The scope is to extract the mapping content of the Map Data activity only.</li>
+  <li>The response can be copied to excel in tabular form.</li>
+  <li>Basic exposure to xml/xslt is required to understand and interpret the mapping exported to the table.</li>
+</ul> 
+
+</p>
+
+
+ <p>
+ 
+<h4>API Details</h4>
+
+<table>
+ 
+   <tr>
+    <td>API URI</td>    
+    <td>https://tibcomappinggenerator.herokuapp.com/generatetable</td>
+  </tr>
+  <tr>
+    <td>API HTTP Method</td>    
+    <td>POST,GET (both work the same for ease of use)</td>
+  </tr>
+   <tr>
+    <td>Content Type</td>    
+    <td>Doesn't matter. This is not required.</td>
+  </tr>
+   <tr>
+    <td>API Input</td>    
+    <td>TIBCO BW 5.x process definition xml content in full(.process file content)</td>
+  </tr>
+   <tr>
+    <td>API Response</td>    
+    <td>Tabular format of the mappings defined all the Map Data activities.</td>
+  </tr>
+    <tr>
+    <td>How to use</td>    
+    <td>Use from any REST API invocation tools. eg : Postman, SOAPUI, JMeter. You can even invoke from your JS,Java,Python code. </td>
+  </tr>
+ </table> 
+ 
+  </p>
+  	 <h4>Use cases and benefits</h4>
+<ul>
+  <li>You simply want to see the tabular view of your mapping.</li>
+  <li>To explain the mapping rules to someone.</li>
+  <li>Generate a (sort of) mapping sheet from the actual code.</li>
+  <li>This export will contain the actual mapping rules and will be way better than any excel sheet representation.</li>
+  <li>Can be used for cross validation with your mapping sheets.</li>
+  <li>Can be generated anytime.</li>
+  <li>Helpful when mapping has several loops and conditional mapping.</li>
+  <li>Extermely helpful in dealing with huge schemas like IDocs.</li>
+  <li>Can be searched easily.</li>
+</ul> 
+    
+  </div>
+
+
+</div>
+
+
+<div style="background-color:#f1f1f1;text-align:center;padding:10px;margin-top:7px;font-size:12px;"> Disclaimer- The data you submit is neither logged nor archived. If you dump trash here, you will be returned nothing. Developed as a personal project, comes with no warranty of any sort.</div>
+
+</body>
+</html>
